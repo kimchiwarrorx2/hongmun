@@ -124,7 +124,7 @@
 
 	$.fn.move_to_page = function(page_id)
 	{
-		location.href = "sub"+$(this).data(page_id)+".html";
+		location.href = "sub"+$(this).data(page_id)+".asp";
 	}
 
 	// Go to top
