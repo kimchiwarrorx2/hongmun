@@ -727,21 +727,25 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 1000;
+  z-index: 1000; /* Ensure it's above all other content */
 }
 
 .popup-content {
   background: white;
   padding: 20px;
   border-radius: 5px;
-  position: relative;
-  width: 400px;
+  position: absolute;
+  width: 400px; /* Fixed width */
+  height: 560px; /* Fixed height */
   max-width: 90%;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .popup-image {
-  max-width: 100%;
+  width: 100%; /* Full width of the popup */
   height: auto;
 }
 
@@ -749,7 +753,6 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 15px;
 }
 
 .no-show-label {
@@ -770,6 +773,8 @@
 @media (max-width: 480px) {
   .popup-content {
     width: 90%;
+    height: auto;
   }
 }
+
 
