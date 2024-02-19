@@ -1,40 +1,45 @@
 /* newpop.css */
-/* Pop-up Modal Styles */
+/* Pop-up Modal Overlay */
 .popup-modal {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5); /* Dimmed background */
   display: flex;
-  align-items: center;
   justify-content: center;
-  z-index: 1000; /* Ensure it's above all other content */
+  align-items: center;
+  z-index: 1000; /* High z-index to ensure it's on top */
+  overflow-y: auto; /* Allows page scrolling */
 }
 
+/* Pop-up Content Box */
 .popup-content {
   background: white;
   padding: 20px;
   border-radius: 5px;
-  position: absolute;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
   width: 400px; /* Fixed width */
   height: 560px; /* Fixed height */
-  max-width: 90%;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  max-width: 96%; /* Ensures some margin on small screens */
+  position: relative; /* For close button absolute positioning */
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
 }
 
+/* Pop-up Image */
 .popup-image {
   width: 100%; /* Full width of the popup */
   height: auto;
+  object-fit: cover; /* Ensures the image covers the area */
 }
 
+/* Pop-up Options and Close Button */
 .popup-options {
   display: flex;
   justify-content: space-between;
+  margin-top: auto; /* Pushes the options to the bottom */
   align-items: center;
 }
 
@@ -50,6 +55,9 @@
   padding: 8px 16px;
   cursor: pointer;
   border-radius: 5px;
+  position: absolute;
+  top: -10px; /* Adjust as needed */
+  right: -10px; /* Adjust as needed */
 }
 
 /* Responsive adjustments for mobile */
