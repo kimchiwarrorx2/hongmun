@@ -44,3 +44,23 @@ layout: default
 	<!-- //메인내 메뉴 버튼 영역 -->
 </div>
 <!-- //메인영역 -->
+
+<!-- //팝업영역 -->
+
+<div id="popup1" class="modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="close" onclick="closeModal('popup1')">&times;</span>
+    </div>
+    <div class="modal-body">
+      <img src="assets/images/pop_up_01.png" alt="Pop Up 1">
+    </div>
+    <div class="modal-footer">
+      <label><input type="checkbox" id="noShow1" onclick="setNoShow('popup1')"> 오늘 하루 열지 않기</label>
+      <button onclick="closeModal('popup1')">닫기</button>
+    </div>
+  </div>
+</div>
+
+<link rel="stylesheet" href="newpop.css">
+<script src="newpop.js"></script>
