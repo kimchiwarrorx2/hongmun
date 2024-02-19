@@ -18,7 +18,12 @@
   padding: 20px;
   border: 1px solid #888;
   width: 80%;
-  max-width: 700px;
+  max-width: 400px; /* Max width of the modal content to fit the image */
+}
+
+.modal-body img {
+  width: 400px; /* Fixed width for the image */
+  height: 560px; /* Fixed height for the image */
 }
 
 .close {
