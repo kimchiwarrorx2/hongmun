@@ -11,17 +11,13 @@ var modal = (function(){
 	_overflow = 'auto';
 
 	// Center the modal in the viewport
-	method.center = function () {
-		var top, left;
-
-		top = Math.max($(window).height() - $modal.outerHeight(), 0) / 2;
-		left = Math.max($(window).width() - $modal.outerWidth(), 0) / 2;
-
-		$modal.css({
-			top:top + $(window).scrollTop(), 
-			left:left + $(window).scrollLeft()
-		});
-	};
+        method.center = function () {
+                $modal.css({
+                        top: '50%',
+                        left: '50%',
+                        transform: 'translate(-50%, -50%)'
+                });
+        };
 
 	method.set = function(w, h, overflow, obj)
 	{

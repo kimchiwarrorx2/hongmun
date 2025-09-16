@@ -1,1 +1,4 @@
 baseurl: /hongmun
+
+popup:
+  enabled: false

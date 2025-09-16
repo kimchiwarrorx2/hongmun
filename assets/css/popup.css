@@ -187,3 +187,8 @@
 	margin-left: -16px;
 	background: url(../images/loading.gif) no-repeat;
 }
+#banner-popup img.banner-img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
