@@ -1,7 +1,45 @@
 {% assign popup_images = site.static_files | where_exp: 'file', 'file.path contains "assets/images/popup/"' %}
 {% if popup_images.size > 0 %}
-<div id="banner-popup" style="display:none; text-align: center;">
-  <img src="{{ popup_images[0].path }}" class="banner-img" alt="팝업 배너" style="max-width: 400px; width: 100%; height: auto;">
+<div id="banner-popup" style="display:none; position: fixed; top: 15%; left: 50%; transform: translateX(-50%); z-index: 9999; background: white; box-shadow: 0 4px 15px rgba(0,0,0,0.3); border-radius: 8px; overflow: hidden; max-width: 90%; width: 400px;">
+  
+  <div>
+    <img src="{{ popup_images[0].path }}" alt="팝업 배너" style="width: 100%; height: auto; display: block;">
+  </div>
+
+  <div style="padding: 10px; background-color: #f8f9fa; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #ddd;">
+    <label style="font-size: 13px; cursor: pointer; color: #333;">
+      <input type="checkbox" id="dontShowToday" style="vertical-align: middle; margin-right: 5px;">
+      오늘 하루 보지 않기
+    </label>
+    <button onclick="closePopup()" style="cursor: pointer; padding: 5px 12px; background-color: #555; color: white; border: none; border-radius: 4px; font-size: 13px;">
+      닫기
+    </button>
+  </div>
 </div>
-<script src="assets/js/auto-popup.js"></script>
+
+<script>
+  // 팝업 제어 스크립트
+  (function() {
+    var popup = document.getElementById('banner-popup');
+    var checkbox = document.getElementById('dontShowToday');
+    
+    // 오늘 날짜 구하기 (YYYY-MM-DD 형식)
+    var today = new Date().toISOString().split('T')[0];
+    
+    // '숨김 처리된 날짜'가 오늘과 다르면 팝업 표시
+    var hiddenDate = localStorage.getItem('popupHiddenDate');
+    if (hiddenDate !== today) {
+      popup.style.display = 'block';
+    }
+
+    // 닫기 버튼 눌렀을 때 실행되는 함수
+    window.closePopup = function() {
+      // 체크박스에 체크했다면, 오늘 날짜를 저장해둠 (내일부터 다시 뜸)
+      if (checkbox.checked) {
+        localStorage.setItem('popupHiddenDate', today);
+      }
+      popup.style.display = 'none';
+    };
+  })();
+</script>
 {% endif %}
