@@ -1,7 +1,7 @@
 {% assign popup_images = site.static_files | where_exp: 'file', 'file.path contains "assets/images/popup/"' %}
 {% if popup_images.size > 0 %}
-<div id="banner-popup" style="display:none;">
-  <img src="{{ popup_images[0].path }}" class="banner-img" alt="팝업 배너">
+<div id="banner-popup" style="display:none; text-align: center;">
+  <img src="{{ popup_images[0].path }}" class="banner-img" alt="팝업 배너" style="max-width: 400px; width: 100%; height: auto;">
 </div>
 <script src="assets/js/auto-popup.js"></script>
 {% endif %}
