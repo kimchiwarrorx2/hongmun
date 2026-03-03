@@ -124,7 +124,7 @@
 
 	$.fn.move_to_page = function(page_id)
 	{
-		location.href = "sub"+$(this).data(page_id)+".asp";
+		location.href = "sub"+$(this).data(page_id)+".html";
 	}
 
 	// Go to top
@@ -166,7 +166,7 @@
 		$(".navbar-nav li").each(function() {
 			var sub_len = $(this).find(".sub-menu-wrap li")!=null ? $(this).find(".sub-menu-wrap li").length: 0;
 			if(sub_len<=1) $(this).children(".navi-title").css("background", "transparent");
-			var sub_menu_id = "sub"+$(this).data("val")+".asp";
+			var sub_menu_id = "sub"+$(this).data("val")+".html";
 			if (typeof sub_menu_id !== 'undefined' && sub_menu_id == str)
 			{
 				if($(document).width()<720)
