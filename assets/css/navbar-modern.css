@@ -1,0 +1,220 @@
+@charset "UTF-8";
+
+/* =========================================================
+   Modern Navbar — Hongmun Surgery Clinic
+   Tone: navy primary (logo) + red accent (cross mark)
+   Loaded after skin38.css to override legacy styles.
+   ========================================================= */
+
+:root {
+    --hm-navy: #1d2088;
+    --hm-navy-soft: #2a2ea3;
+    --hm-red: #c0392b;
+    --hm-ink: #1a1d2e;
+    --hm-muted: #6b7280;
+    --hm-line: #e6e8ef;
+    --hm-bg: #ffffff;
+    --hm-shadow: 0 1px 0 rgba(15, 23, 42, 0.04), 0 8px 24px -12px rgba(29, 32, 136, 0.18);
+}
+
+/* Apply SUIT to the entire site (graceful fallback) */
+html, body, .navbar, .navbar-nav, .navi-title, #footer, h1, h2, h3, h4, h5, h6 {
+    font-family: "SUIT", "Pretendard", "나눔고딕", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* ---- Sticky header shell ---------------------------------- */
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--hm-bg);
+    border-bottom: 1px solid var(--hm-line);
+    box-shadow: var(--hm-shadow);
+    backdrop-filter: saturate(140%) blur(6px);
+    -webkit-backdrop-filter: saturate(140%) blur(6px);
+}
+
+.navbar .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* ---- Mobile (default) ------------------------------------- */
+.navbar-header {
+    height: 64px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon-top {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    max-width: 26px;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+}
+.icon-top:hover { opacity: 0.7; }
+
+.icon-home, .icon-menu { left: 14px; }
+
+.navbar-brand {
+    position: static;
+    margin: 0;
+    padding: 0;
+    max-width: 160px;
+    height: auto;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+.navbar-brand:hover { transform: translateY(-1px); }
+
+/* mobile slide-in menu retains legacy dark style for now */
+#menu-wrap {
+    width: 240px;
+    background-color: #1a1d2e;
+}
+.navbar-nav {
+    background-color: #1a1d2e;
+}
+.navi-title {
+    font-size: 15px;
+    letter-spacing: -0.01em;
+    padding: 18px 20px;
+}
+
+/* ---- Desktop (>= 720px) ----------------------------------- */
+@media (min-width: 720px) {
+    .navbar {
+        background: rgba(255, 255, 255, 0.92);
+    }
+
+    .navbar .container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 32px;
+        height: 80px;
+        padding: 0 32px;
+    }
+
+    .navbar-header {
+        float: none !important;
+        height: auto;
+        display: flex !important;
+        align-items: center;
+        justify-content: flex-start;
+        flex: 0 0 auto;
+    }
+
+    .navbar-brand {
+        position: static !important;
+        margin: 0 !important;
+        max-width: none;
+        height: 44px;
+        width: auto;
+    }
+
+    /* hide mobile-only icons on desktop is already handled in skin38.css */
+
+    #menu-wrap {
+        position: static;
+        width: auto;
+        padding: 0 !important;
+        background: transparent;
+        flex: 1 1 auto;
+        display: flex !important;
+        justify-content: flex-end;
+    }
+
+    .navbar-nav {
+        background: transparent;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        align-items: center;
+        gap: 4px;
+    }
+
+    .navbar-nav > li {
+        list-style: none;
+        position: relative;
+    }
+
+    .navbar-nav > li > a {
+        display: block;
+        text-decoration: none;
+    }
+
+    .navi-title {
+        display: inline-flex;
+        align-items: center;
+        height: 80px;
+        padding: 0 18px !important;
+        font-size: 16px !important;
+        font-weight: 600 !important;
+        letter-spacing: -0.015em;
+        color: var(--hm-ink) !important;
+        background: transparent !important;
+        border: 0 !important;
+        cursor: pointer;
+        transition: color 0.2s ease;
+        position: relative;
+        float: none !important;
+        text-align: center;
+    }
+
+    /* animated underline indicator */
+    .navi-title::after {
+        content: "";
+        position: absolute;
+        left: 18px;
+        right: 18px;
+        bottom: 22px;
+        height: 2px;
+        background: var(--hm-red);
+        border-radius: 2px;
+        transform: scaleX(0);
+        transform-origin: center;
+        transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .navbar-nav > li > a:hover .navi-title,
+    .navbar-nav > li > a:focus .navi-title {
+        color: var(--hm-navy) !important;
+    }
+
+    .navbar-nav > li > a:hover .navi-title::after,
+    .navbar-nav > li > a:focus .navi-title::after,
+    .navi-title.on::after,
+    .navi-title.curr_menu::after {
+        transform: scaleX(1);
+    }
+
+    .navi-title.on,
+    .navi-title.curr_menu {
+        color: var(--hm-navy) !important;
+    }
+    .navi-title.on::after,
+    .navi-title.curr_menu::after {
+        background: var(--hm-navy);
+    }
+}
+
+/* ---- Larger desktop (>= 1024px) --------------------------- */
+@media (min-width: 1024px) {
+    .navbar-nav { gap: 8px; }
+    .navi-title {
+        padding: 0 22px !important;
+        font-size: 17px !important;
+    }
+    .navi-title::after {
+        left: 22px;
+        right: 22px;
+    }
+}
